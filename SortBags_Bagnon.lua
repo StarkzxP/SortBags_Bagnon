@@ -43,38 +43,54 @@ end
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", OnEvent)
 
-function SortBagsButton_OnClick()
-    SortBags()
-end
-
-function SortBagsButton_OnEnter()
+function UpdateTooltip()
+    local sortDirectionText
+    if GetSortBagsRightToLeft() then
+        sortDirectionText = "Left to Right"
+    else
+        sortDirectionText = "Right to Left"
+    end
     GameTooltip:ClearAllPoints()
     GameTooltip:SetPoint("TOPRIGHT", this, "BOTTOMRIGHT")
     GameTooltip:SetOwner(this, "ANCHOR_PRESERVE")
-    GameTooltip:SetText("Sort Left to Right", 1, 1, 1)
+    GameTooltip:SetText("Sort " .. sortDirectionText, 1, 1, 1)
     GameTooltip:AddLine("<Left-Click> to sort.")
-    --GameTooltip:AddLine("<Right-Click> to change sorting direction.")
+    GameTooltip:AddLine("<Right-Click> to change sorting direction.")
     GameTooltip:Show()
 end
 
-function SortBagsButton_OnLeave()
+function SortButton_OnMouseDown()
+    if arg1 == "RightButton" then
+        this:SetButtonState("PUSHED")
+    end
+end
+
+function SortButton_OnEnter()
+    UpdateTooltip()
+end
+
+function SortButton_OnLeave()
     GameTooltip:Hide()
 end
 
-function SortBankButton_OnClick()
-    SortBankBags()
+local function ChangeSortOrder(button)
+    button:SetButtonState("NORMAL")
+    SetSortBagsRightToLeft(not GetSortBagsRightToLeft())
+    UpdateTooltip()
 end
 
-function SortBankButton_OnEnter()
-    GameTooltip:ClearAllPoints()
-    GameTooltip:SetPoint("TOPRIGHT", this, "BOTTOMRIGHT")
-    GameTooltip:SetOwner(this, "ANCHOR_PRESERVE")
-    GameTooltip:SetText("Sort Left to Right", 1, 1, 1)
-    GameTooltip:AddLine("<Left-Click> to sort.")
-    --GameTooltip:AddLine("<Right-Click> to change sorting direction.")
-    GameTooltip:Show()
+function SortBagsButton_OnMouseUp()
+    if arg1 == "LeftButton" then
+        SortBags()
+    elseif arg1 == "RightButton" then
+        ChangeSortOrder(this)
+    end
 end
 
-function SortBankButton_OnLeave()
-    GameTooltip:Hide()
+function SortBankButton_OnMouseUp()
+    if arg1 == "LeftButton" then
+        SortBankBags()
+    elseif arg1 == "RightButton" then
+        ChangeSortOrder(this)
+    end
 end

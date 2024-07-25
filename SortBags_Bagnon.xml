@@ -1,35 +1,53 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Button name="SortButtonTemplate" virtual="true" inherits="UIPanelButtonTemplate">
+        <Size>
+            <AbsDimension x="22" y="20"/>
+        </Size>
+        <NormalTexture file="Interface\AddOns\SortBags_Bagnon\Bags">
+            <TexCoords left="0.12109375" right="0.23046875" top="0.7265625" bottom="0.9296875"/>
+        </NormalTexture>
+        <PushedTexture file="Interface\AddOns\SortBags_Bagnon\Bags">
+            <TexCoords left="0.00390625" right="0.11328125" top="0.7265625" bottom="0.9296875"/>
+        </PushedTexture>
+        <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+            <Anchor point="CENTER"/>
+            <Size>
+                <AbsDimension x="14" y="12"/>
+            </Size>
+        </HighlightTexture>
+    </Button>
+
     <Frame name="SortBagsButtonFrame" hidden="true">
         <Frames>
-            <Button name="SortBagsButton" inherits="UIPanelButtonTemplate" text="Sort">
-                <Size>
-                    <AbsDimension x="40" y="18"/>
-                </Size>
+            <Button name="SortBagsButton" inherits="SortButtonTemplate">
                 <Scripts>
-                    <OnClick>
-                        SortBagsButton_OnClick()
-                    </OnClick>
+                    <OnMouseDown>
+                        SortButton_OnMouseDown()
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        SortBagsButton_OnMouseUp()
+                    </OnMouseUp>
                     <OnEnter>
-                        SortBagsButton_OnEnter()
+                        SortButton_OnEnter()
                     </OnEnter>
                     <OnLeave>
-                        SortBagsButton_OnLeave()
+                        SortButton_OnLeave()
                     </OnLeave>
                 </Scripts>
             </Button>
-            <Button name="SortBankButton" inherits="UIPanelButtonTemplate" text="Sort">
-                <Size>
-                    <AbsDimension x="40" y="18"/>
-                </Size>
+            <Button name="SortBankButton" inherits="SortButtonTemplate">
                 <Scripts>
-                    <OnClick>
-                        SortBankButton_OnClick()
-                    </OnClick>
+                    <OnMouseDown>
+                        SortButton_OnMouseDown()
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        SortBankButton_OnMouseUp()
+                    </OnMouseUp>
                     <OnEnter>
-                        SortBankButton_OnEnter()
+                        SortButton_OnEnter()
                     </OnEnter>
                     <OnLeave>
-                        SortBankButton_OnLeave()
+                        SortButton_OnLeave()
                     </OnLeave>
                 </Scripts>
             </Button>
