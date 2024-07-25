@@ -1,0 +1,38 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Frame name="SortBagsButtonFrame" hidden="true">
+        <Frames>
+            <Button name="SortBagsButton" inherits="UIPanelButtonTemplate" text="Sort">
+                <Size>
+                    <AbsDimension x="40" y="18"/>
+                </Size>
+                <Scripts>
+                    <OnClick>
+                        SortBagsButton_OnClick()
+                    </OnClick>
+                    <OnEnter>
+                        SortBagsButton_OnEnter()
+                    </OnEnter>
+                    <OnLeave>
+                        SortBagsButton_OnLeave()
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <Button name="SortBankButton" inherits="UIPanelButtonTemplate" text="Sort">
+                <Size>
+                    <AbsDimension x="40" y="18"/>
+                </Size>
+                <Scripts>
+                    <OnClick>
+                        SortBankButton_OnClick()
+                    </OnClick>
+                    <OnEnter>
+                        SortBankButton_OnEnter()
+                    </OnEnter>
+                    <OnLeave>
+                        SortBankButton_OnLeave()
+                    </OnLeave>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+</Ui>

@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: SortBags_Bagnon
+## Notes: Adds sorting function to Bagnon.
+## Author: Starkz
+SortBags_Bagnon.xml
+SortBags_Bagnon.lua
